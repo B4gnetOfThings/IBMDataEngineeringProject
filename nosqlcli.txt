@@ -1,0 +1,1059 @@
+...     $sort: { totalMovies: -1 }
+...   },
+...   {
+...     $limit: 1
+...   }
+... ])
+[ { _id: 2016, totalMovies: 73 } ]
+entertainment> db.movies.countDocuments({ year: { $gt: 1999 } })
+99
+entertainment> db.movies.aggregate([
+...     {
+...         "$match":{
+...             "year":2007
+...             }
+...             },
+...     {
+...         "$group":{
+...             "_id":"$year",
+...             "average":{
+...                 "$avg":"$Votes"}
+...     }
+...     }
+... ])
+[ { _id: 2007, average: 192.5 } ]
+entertainment> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -d entertainment -c movies -f "_id,title,year,rating,director" --type-csv -o partial_data.csv --host mongo
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -d entertainment -c movies -f "_id,title,year,rating,director" --type-csv -o partial_data.csv --host mongo
+    |                ^
+  2 |
+
+entertainment> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection m
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection m
+    |                ^
+  2 |
+
+entertainment> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+    |                ^
+  2 |
+
+entertainment> exit
+theia@theiadocker-jomelfelix:/home/project$ mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+bash: mongoexpoert: command not found
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd -
+-authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --t
+ype=csv --fields _id,title,year,rating,director --host mongo
+2026-02-11T22:13:20.444-0500    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2026-02-11T22:13:20.444-0500    try 'mongoexport --help' for more information
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --
+type=csv --fields _id,title,year,rating,director --host mongo
+2026-02-11T22:16:25.206-0500    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2026-02-11T22:16:25.206-0500    try 'mongoexport --help' for more information
+theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin local --host mongo
+Current Mongosh Log ID: 698d461fc86747a5269dc29c
+Connecting to:          mongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDa
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDa
+    |                ^
+  2 |
+
+local> mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+Uncaught:
+SyntaxError: Missing semicolon. (1:14)
+
+> 1 | mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+    |               ^
+  2 |
+
+local> exit
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+2026-02-11T22:17:42.305-0500    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2026-02-11T22:17:42.305-0500    try 'mongoexport --help' for more information
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd \ 
+--authenticationDatabase admin \
+--db entertainment \
+--collection movies \
+--out partial_data.csv \
+--type=csv \
+--fields _id,title,year,rating,director \
+--host mongo
+2026-02-11T22:19:16.849-0500    connected to: mongodb://mongo/
+2026-02-11T22:19:16.853-0500    exported 100 records
+theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --aut
+min local --host mongom
+Current Mongosh Log ID: 698d37d7958661430d9dc29c
+Connecting to:          mongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> use training
+switched to db training
+training> db.createCollection("bigdata")
+{ ok: 1 }
+training> curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkill
+training> curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkilllabs/FinalProject/movies.json
+Uncaught:
+SyntaxError: Missing semicolon. (1:7)
+
+> 1 | curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-DB0151EN-edX/labs/FinalProject/movies.json
+ies.jsonGd --authenticationDatabase admin --db entertainment -c movies --host mov 
+2026-02-11T21:24:32.352-0500    error connecting to host: failed to connect to mongodb://movies.json/: server selection error: server selection timeout, current topology: { Type: Single,theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --autM3pAGd --authenticationDatabase admin local --host mongoB0151EN-edX/labs/FinalProject/movies.
+Current Mongosh Log ID: 698d39faffcbc6ac049dc29c
+Connecting to:raining --mongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9on diamonds --file diamonds.json --hoN --authenticationData
+Using MongoDB: training 4.4.29ection diamonds --file diamonds.json --ND --authenticationDat
+Using Mongosh:db trainin2.5.9ollection diamonds --file diamonds.json --DA --authenticationDa
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shellticationD
+atabase admin --db training --collection diamonds --file diamonds.jsonNDAtc --authentication
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/s.jsoNDAtcn --authenticatio
+nDatabase admin --db training --collection diamonds --file diamonds.jsNDAtcnN -
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> show dbs
+admin     100.00 KiB
+config     72.00 KiB
+local      72.00 KiB
+training   88.00 KiB
+local> use entertainment
+switched to db entertainment
+entertainment> show dbs
+admin     100.00 KiB
+config     72.00 KiB
+cT5zM3pAGd --authenticationDatabase admin --db entertainment --collecti5zM3pAGd --authenticationDatabase admin --db entertainment --collection moviesction movies ---on movies --imon    
+--file movieson --host --collection diamonds --file diamonds.json --hoN --authenticationDat
+2026-02-11T21:34:36.282-0500llecconnected to: mongodb://mongo/json --ND --authenticationDat
+2026-02-11T21:34:36.290-0500coll100 document(s) imported successfully. 0 document(s) failed to import.min --db training --collection diamonds --file diamonds.json NDAt --authenticationD
+theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin local --host mongo
+Current Mongosh Log ID: 698d40e82bd8b4dc1f9dc29c
+Connecting to:Database amongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9-collection diamonds --file diamonds.NDAtcnNhb --authentica
+Using MongoDB:dmin --db 4.4.29ng --collection diamonds --file diamondsOWMefscT5zM
+Using Mongosh:ionDatabas2.5.9in --db training --collection diamonds --file diamond
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shell--authent
+onds.onDatabase admin --db training --collection diamonds --file diamonds.json --host mongo
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/onds --file diamo
+
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> use entertainment
+switched to db entertainment
+entertainment> db.movies.aggregate([
+...   {
+...     $group: {
+...       _id: "$year",
+...       totalMovies: { $sum: 1 }
+...     }
+...   },
+...   {
+...     $sort: { totalMovies: -1 }
+...   },
+...   {
+...     $limit: 1
+...   }
+... ])
+[ { _id: 2016, totalMovies: 73 } ]
+entertainment> db.movies.countDocuments({ year: { $gt: 1999 } })
+99
+entertainment> db.movies.aggregate([
+...     {
+...         "$match":{
+...             "year":2007
+...             }
+...             },
+...     {
+...         "$group":{
+...             "_id":"$year",
+...             "average":{
+...                 "$avg":"$Votes"}
+...     }
+...     }
+... ])
+[ { _id: 2007, average: 192.5 } ]
+entertainment> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -d entertainment -c movies -f "_id,title,year,rating,director" --type-csv -o partial_data.csv --host mongo
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -d entertainment -c movies -f "_id,title,year,rating,director" --type-csv -o partial_data.csv --host mongo
+    |                ^
+  2 |
+
+entertainment> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection m
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection m
+    |                ^
+  2 |
+
+entertainment> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+    |                ^
+  2 |
+
+entertainment> exit
+theia@theiadocker-jomelfelix:/home/project$ mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+bash: mongoexpoert: command not found
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd -
+-authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --t
+ype=csv --fields _id,title,year,rating,director --host mongo
+2026-02-11T22:13:20.444-0500    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2026-02-11T22:13:20.444-0500    try 'mongoexport --help' for more information
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --
+type=csv --fields _id,title,year,rating,director --host mongo
+2026-02-11T22:16:25.206-0500    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2026-02-11T22:16:25.206-0500    try 'mongoexport --help' for more information
+theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin local --host mongo
+Current Mongosh Log ID: 698d461fc86747a5269dc29c
+Connecting to:          mongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDa
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDa
+    |                ^
+  2 |
+
+local> mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+Uncaught:
+SyntaxError: Missing semicolon. (1:14)
+
+> 1 | mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+    |               ^
+  2 |
+
+local> exit
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+2026-02-11T22:17:42.305-0500    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2026-02-11T22:17:42.305-0500    try 'mongoexport --help' for more information
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd \ 
+--authenticationDatabase admin \
+--db entertainment \
+--collection movies \
+--out partial_data.csv \
+--type=csv \
+--fields _id,title,year,rating,director \
+--host mongo
+2026-02-11T22:19:16.849-0500    connected to: mongodb://mongo/
+2026-02-11T22:19:16.853-0500    exported 100 records
+theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --aut
+min local --host mongom
+Current Mongosh Log ID: 698d37d7958661430d9dc29c
+Connecting to:          mongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> use training
+switched to db training
+training> db.createCollection("bigdata")
+{ ok: 1 }
+training> curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkill
+training> curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkilllabs/FinalProject/movies.json
+Uncaught:
+SyntaxError: Missing semicolon. (1:7)
+
+> 1 | curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-DB0151EN-edX/labs/FinalProject/movies.json
+ies.jsonGd --authenticationDatabase admin --db entertainment -c movies --host mov 
+2026-02-11T21:24:32.352-0500    error connecting to host: failed to connect to mongodb://movies.json/: server selection error: server selection timeout, current topology: { Type: Single,theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --autM3pAGd --authenticationDatabase admin local --host mongoB0151EN-edX/labs/FinalProject/movies.
+Current Mongosh Log ID: 698d39faffcbc6ac049dc29c
+Connecting to:raining --mongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9on diamonds --file diamonds.json --hoN --authenticationData
+Using MongoDB: training 4.4.29ection diamonds --file diamonds.json --ND --authenticationDat
+Using Mongosh:db trainin2.5.9ollection diamonds --file diamonds.json --DA --authenticationDa
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shellticationD
+atabase admin --db training --collection diamonds --file diamonds.jsonNDAtc --authentication
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/s.jsoNDAtcn --authenticatio
+nDatabase admin --db training --collection diamonds --file diamonds.jsNDAtcnN -
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> show dbs
+admin     100.00 KiB
+config     72.00 KiB
+local      72.00 KiB
+training   88.00 KiB
+local> use entertainment
+switched to db entertainment
+entertainment> show dbs
+admin     100.00 KiB
+config     72.00 KiB
+cT5zM3pAGd --authenticationDatabase admin --db entertainment --collecti5zM3pAGd --authenticationDatabase admin --db entertainment --collection moviesction movies ---on movies --imon    
+--file movieson --host --collection diamonds --file diamonds.json --hoN --authenticationDat
+2026-02-11T21:34:36.282-0500llecconnected to: mongodb://mongo/json --ND --authenticationDat
+2026-02-11T21:34:36.290-0500coll100 document(s) imported successfully. 0 document(s) failed to import.min --db training --collection diamonds --file diamonds.json NDAt --authenticationD
+theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin local --host mongo
+Current Mongosh Log ID: 698d40e82bd8b4dc1f9dc29c
+Connecting to:Database amongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9-collection diamonds --file diamonds.NDAtcnNhb --authentica
+Using MongoDB:dmin --db 4.4.29ng --collection diamonds --file diamondsOWMefscT5zM
+Using Mongosh:ionDatabas2.5.9in --db training --collection diamonds --file diamond
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shell--authent
+onds.onDatabase admin --db training --collection diamonds --file diamonds.json --host mongo
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/onds --file diamo
+
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> use entertainment
+switched to db entertainment
+entertainment> db.movies.aggregate([
+...   {
+...     $group: {
+...       _id: "$year",
+...       totalMovies: { $sum: 1 }
+...     }
+...   },
+...   {
+...     $sort: { totalMovies: -1 }
+...   },
+...   {
+...     $limit: 1
+...   }
+... ])
+[ { _id: 2016, totalMovies: 73 } ]
+entertainment> db.movies.countDocuments({ year: { $gt: 1999 } })
+99
+entertainment> db.movies.aggregate([
+...     {
+...         "$match":{
+...             "year":2007
+...             }
+...             },
+...     {
+...         "$group":{
+...             "_id":"$year",
+...             "average":{
+...                 "$avg":"$Votes"}
+...     }
+...     }
+... ])
+[ { _id: 2007, average: 192.5 } ]
+entertainment> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -d entertainment -c movies -f "_id,title,year,rating,director" --type-csv -o partial_data.csv --host mongo
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -d entertainment -c movies -f "_id,title,year,rating,director" --type-csv -o partial_data.csv --host mongo
+    |                ^
+  2 |
+
+entertainment> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection m
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection m
+    |                ^
+  2 |
+
+entertainment> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+    |                ^
+  2 |
+
+entertainment> exit
+theia@theiadocker-jomelfelix:/home/project$ mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+bash: mongoexpoert: command not found
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd -
+-authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --t
+ype=csv --fields _id,title,year,rating,director --host mongo
+2026-02-11T22:13:20.444-0500    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2026-02-11T22:13:20.444-0500    try 'mongoexport --help' for more information
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --
+type=csv --fields _id,title,year,rating,director --host mongo
+2026-02-11T22:16:25.206-0500    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2026-02-11T22:16:25.206-0500    try 'mongoexport --help' for more information
+theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin local --host mongo
+Current Mongosh Log ID: 698d461fc86747a5269dc29c
+Connecting to:          mongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDa
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDa
+    |                ^
+  2 |
+
+local> mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+Uncaught:
+SyntaxError: Missing semicolon. (1:14)
+
+> 1 | mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+    |               ^
+  2 |
+
+local> exit
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+2026-02-11T22:17:42.305-0500    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2026-02-11T22:17:42.305-0500    try 'mongoexport --help' for more information
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd \ 
+--authenticationDatabase admin \
+--db entertainment \
+--collection movies \
+--out partial_data.csv \
+--type=csv \
+--fields _id,title,year,rating,director \
+--host mongo
+2026-02-11T22:19:16.849-0500    connected to: mongodb://mongo/
+2026-02-11T22:19:16.853-0500    exported 100 records
+theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --aut
+min local --host mongom
+Current Mongosh Log ID: 698d37d7958661430d9dc29c
+Connecting to:          mongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> use training
+switched to db training
+training> db.createCollection("bigdata")
+{ ok: 1 }
+training> curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkill
+training> curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkilllabs/FinalProject/movies.json
+Uncaught:
+SyntaxError: Missing semicolon. (1:7)
+
+> 1 | curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-DB0151EN-edX/labs/FinalProject/movies.json
+ies.jsonGd --authenticationDatabase admin --db entertainment -c movies --host mov 
+2026-02-11T21:24:32.352-0500    error connecting to host: failed to connect to mongodb://movies.json/: server selection error: server selection timeout, current topology: { Type: Single,theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --autM3pAGd --authenticationDatabase admin local --host mongoB0151EN-edX/labs/FinalProject/movies.
+Current Mongosh Log ID: 698d39faffcbc6ac049dc29c
+Connecting to:raining --mongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9on diamonds --file diamonds.json --hoN --authenticationData
+Using MongoDB: training 4.4.29ection diamonds --file diamonds.json --ND --authenticationDat
+Using Mongosh:db trainin2.5.9ollection diamonds --file diamonds.json --DA --authenticationDa
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shellticationD
+atabase admin --db training --collection diamonds --file diamonds.jsonNDAtc --authentication
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/s.jsoNDAtcn --authenticatio
+nDatabase admin --db training --collection diamonds --file diamonds.jsNDAtcnN -
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> show dbs
+admin     100.00 KiB
+config     72.00 KiB
+local      72.00 KiB
+training   88.00 KiB
+local> use entertainment
+switched to db entertainment
+entertainment> show dbs
+admin     100.00 KiB
+config     72.00 KiB
+cT5zM3pAGd --authenticationDatabase admin --db entertainment --collecti5zM3pAGd --authenticationDatabase admin --db entertainment --collection moviesction movies ---on movies --imon    
+--file movieson --host --collection diamonds --file diamonds.json --hoN --authenticationDat
+2026-02-11T21:34:36.282-0500llecconnected to: mongodb://mongo/json --ND --authenticationDat
+2026-02-11T21:34:36.290-0500coll100 document(s) imported successfully. 0 document(s) failed to import.min --db training --collection diamonds --file diamonds.json NDAt --authenticationD
+theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin local --host mongo
+Current Mongosh Log ID: 698d40e82bd8b4dc1f9dc29c
+Connecting to:Database amongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9-collection diamonds --file diamonds.NDAtcnNhb --authentica
+Using MongoDB:dmin --db 4.4.29ng --collection diamonds --file diamondsOWMefscT5zM
+Using Mongosh:ionDatabas2.5.9in --db training --collection diamonds --file diamond
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shell--authent
+onds.onDatabase admin --db training --collection diamonds --file diamonds.json --host mongo
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/onds --file diamo
+
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> use entertainment
+switched to db entertainment
+entertainment> db.movies.aggregate([
+...   {
+...     $group: {
+...       _id: "$year",
+...       totalMovies: { $sum: 1 }
+...     }
+...   },
+...   {
+...     $sort: { totalMovies: -1 }
+...   },
+...   {
+...     $limit: 1
+...   }
+... ])
+[ { _id: 2016, totalMovies: 73 } ]
+entertainment> db.movies.countDocuments({ year: { $gt: 1999 } })
+99
+entertainment> db.movies.aggregate([
+...     {
+...         "$match":{
+...             "year":2007
+...             }
+...             },
+...     {
+...         "$group":{
+...             "_id":"$year",
+...             "average":{
+...                 "$avg":"$Votes"}
+...     }
+...     }
+... ])
+[ { _id: 2007, average: 192.5 } ]
+entertainment> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -d entertainment -c movies -f "_id,title,year,rating,director" --type-csv -o partial_data.csv --host mongo
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -d entertainment -c movies -f "_id,title,year,rating,director" --type-csv -o partial_data.csv --host mongo
+    |                ^
+  2 |
+
+entertainment> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection m
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection m
+    |                ^
+  2 |
+
+entertainment> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+    |                ^
+  2 |
+
+entertainment> exit
+theia@theiadocker-jomelfelix:/home/project$ mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+bash: mongoexpoert: command not found
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd -
+-authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --t
+ype=csv --fields _id,title,year,rating,director --host mongo
+2026-02-11T22:13:20.444-0500    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2026-02-11T22:13:20.444-0500    try 'mongoexport --help' for more information
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --
+type=csv --fields _id,title,year,rating,director --host mongo
+2026-02-11T22:16:25.206-0500    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2026-02-11T22:16:25.206-0500    try 'mongoexport --help' for more information
+theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin local --host mongo
+Current Mongosh Log ID: 698d461fc86747a5269dc29c
+Connecting to:          mongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDa
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDa
+    |                ^
+  2 |
+
+local> mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+Uncaught:
+SyntaxError: Missing semicolon. (1:14)
+
+> 1 | mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+    |               ^
+  2 |
+
+local> exit
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+2026-02-11T22:17:42.305-0500    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2026-02-11T22:17:42.305-0500    try 'mongoexport --help' for more information
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd \ 
+--authenticationDatabase admin \
+--db entertainment \
+--collection movies \
+--out partial_data.csv \
+--type=csv \
+--fields _id,title,year,rating,director \
+--host mongo
+2026-02-11T22:19:16.849-0500    connected to: mongodb://mongo/
+2026-02-11T22:19:16.853-0500    exported 100 records
+theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --aut
+min local --host mongom
+Current Mongosh Log ID: 698d37d7958661430d9dc29c
+Connecting to:          mongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> use training
+switched to db training
+training> db.createCollection("bigdata")
+{ ok: 1 }
+training> curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkill
+training> curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkilllabs/FinalProject/movies.json
+Uncaught:
+SyntaxError: Missing semicolon. (1:7)
+
+> 1 | curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-DB0151EN-edX/labs/FinalProject/movies.json
+ies.jsonGd --authenticationDatabase admin --db entertainment -c movies --host mov 
+2026-02-11T21:24:32.352-0500    error connecting to host: failed to connect to mongodb://movies.json/: server selection error: server selection timeout, current topology: { Type: Single,theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --autM3pAGd --authenticationDatabase admin local --host mongoB0151EN-edX/labs/FinalProject/movies.
+Current Mongosh Log ID: 698d39faffcbc6ac049dc29c
+Connecting to:raining --mongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9on diamonds --file diamonds.json --hoN --authenticationData
+Using MongoDB: training 4.4.29ection diamonds --file diamonds.json --ND --authenticationDat
+Using Mongosh:db trainin2.5.9ollection diamonds --file diamonds.json --DA --authenticationDa
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shellticationD
+atabase admin --db training --collection diamonds --file diamonds.jsonNDAtc --authentication
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/s.jsoNDAtcn --authenticatio
+nDatabase admin --db training --collection diamonds --file diamonds.jsNDAtcnN -
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> show dbs
+admin     100.00 KiB
+config     72.00 KiB
+local      72.00 KiB
+training   88.00 KiB
+local> use entertainment
+switched to db entertainment
+entertainment> show dbs
+admin     100.00 KiB
+config     72.00 KiB
+cT5zM3pAGd --authenticationDatabase admin --db entertainment --collecti5zM3pAGd --authenticationDatabase admin --db entertainment --collection moviesction movies ---on movies --imon    
+--file movieson --host --collection diamonds --file diamonds.json --hoN --authenticationDat
+2026-02-11T21:34:36.282-0500llecconnected to: mongodb://mongo/json --ND --authenticationDat
+2026-02-11T21:34:36.290-0500coll100 document(s) imported successfully. 0 document(s) failed to import.min --db training --collection diamonds --file diamonds.json NDAt --authenticationD
+theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin local --host mongo
+Current Mongosh Log ID: 698d40e82bd8b4dc1f9dc29c
+Connecting to:Database amongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9-collection diamonds --file diamonds.NDAtcnNhb --authentica
+Using MongoDB:dmin --db 4.4.29ng --collection diamonds --file diamondsOWMefscT5zM
+Using Mongosh:ionDatabas2.5.9in --db training --collection diamonds --file diamond
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shell--authent
+onds.onDatabase admin --db training --collection diamonds --file diamonds.json --host mongo
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/onds --file diamo
+
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> use entertainment
+switched to db entertainment
+entertainment> db.movies.aggregate([
+...   {
+...     $group: {
+...       _id: "$year",
+...       totalMovies: { $sum: 1 }
+...     }
+...   },
+...   {
+...     $sort: { totalMovies: -1 }
+...   },
+...   {
+...     $limit: 1
+...   }
+... ])
+[ { _id: 2016, totalMovies: 73 } ]
+entertainment> db.movies.countDocuments({ year: { $gt: 1999 } })
+99
+entertainment> db.movies.aggregate([
+...     {
+...         "$match":{
+...             "year":2007
+...             }
+...             },
+...     {
+...         "$group":{
+...             "_id":"$year",
+...             "average":{
+...                 "$avg":"$Votes"}
+...     }
+...     }
+... ])
+[ { _id: 2007, average: 192.5 } ]
+entertainment> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -d entertainment -c movies -f "_id,title,year,rating,director" --type-csv -o partial_data.csv --host mongo
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -d entertainment -c movies -f "_id,title,year,rating,director" --type-csv -o partial_data.csv --host mongo
+    |                ^
+  2 |
+
+entertainment> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection m
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection m
+    |                ^
+  2 |
+
+entertainment> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+    |                ^
+  2 |
+
+entertainment> exit
+theia@theiadocker-jomelfelix:/home/project$ mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+bash: mongoexpoert: command not found
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd -
+-authenticationDatabase admin -db entertainment -collection movies --out partial_data.csv --t
+ype=csv --fields _id,title,year,rating,director --host mongo
+2026-02-11T22:13:20.444-0500    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2026-02-11T22:13:20.444-0500    try 'mongoexport --help' for more information
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --
+type=csv --fields _id,title,year,rating,director --host mongo
+2026-02-11T22:16:25.206-0500    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2026-02-11T22:16:25.206-0500    try 'mongoexport --help' for more information
+theia@theiadocker-jomelfelix:/home/project$ mongosh -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin local --host mongo
+Current Mongosh Log ID: 698d461fc86747a5269dc29c
+Connecting to:          mongodb://<credentials>@mongo:27017/local?directConnection=true&authSource=admin&appName=mongosh+2.5.9
+Using MongoDB:          4.4.29
+Using Mongosh:          2.5.9
+mongosh 2.6.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-02-11T14:46:20.330+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+------
+
+local> mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDa
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongoexpoert -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDa
+    |                ^
+  2 |
+
+local> mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+Uncaught:
+SyntaxError: Missing semicolon. (1:14)
+
+> 1 | mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+    |               ^
+  2 |
+
+local> exit
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd --authenticationDatabase admin --db entertainment -collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director --host mongo
+2026-02-11T22:17:42.305-0500    error parsing command line options: error parsing positional arguments: provide only one MongoDB connection string. Connection strings must begin with mongodb:// or mongodb+srv:// schemes
+2026-02-11T22:17:42.305-0500    try 'mongoexport --help' for more information
+theia@theiadocker-jomelfelix:/home/project$ mongoexport -u root -p MsoqayUTOWMefscT5zM3pAGd \ 
+--authenticationDatabase admin \
+--db entertainment \
+--collection movies \
+--out partial_data.csv \
+--type=csv \
+--fields _id,title,year,rating,director \
+--host mongo
+2026-02-11T22:19:16.849-0500    connected to: mongodb://mongo/
+2026-02-11T22:19:16.853-0500    exported 100 records
+theia@theiadocker-jomelfelix:/home/project$ S
+
+
+
+
+
+
+
+
+
+
+
+##cassandra
+
+
+
+theia@theiadocker-jomelfelix:/home/project$ cqlsh 172.21.255.67 9042 --username root --password o7VFD9r4KxRi8hPSNpxZsVdd
+WARNING: cqlsh was built against 4.0.19, but this server is 5.0.  All features may not work!
+Connected to Test Cluster at 172.21.255.67:9042
+[cqlsh 6.0.0 | Cassandra 5.0-beta1 | CQL spec 3.4.7 | Native protocol v5]
+Use HELP for help.
+root@cqlsh> 
+root@cqlsh> exit
+theia@theiadocker-jomelfelix:/home/project$ curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-DB0151EN-edX/labs/FinalProject/partial_data.csv
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  3120  100  3120    0     0  20257      0 --:--:-- --:--:-- --:--:-- 20392
+theia@theiadocker-jomelfelix:/home/project$ cqlsh 172.21.255.67 9042 --username root --password o7VFD9r4KxRi8hPSNpxZsVdd
+WARNING: cqlsh was built against 4.0.19, but this server is 5.0.  All features may not work!
+Connected to Test Cluster at 172.21.255.67:9042
+[cqlsh 6.0.0 | Cassandra 5.0-beta1 | CQL spec 3.4.7 | Native protocol v5]
+Use HELP for help.
+root@cqlsh> CREATE KEYSPACE entertainment  
+   ... WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
+
+Warnings :
+Your replication factor 3 for keyspace entertainment is higher than the number of nodes 1
+
+root@cqlsh> use entertainment;
+root@cqlsh:entertainment> CREATE TABLE movies(
+                 ... id text PRIMARY KEY,
+                 ... title text,
+                 ... year text,
+                 ... rating text,
+                 ... director text
+                 ... );
+root@cqlsh:entertainment> COPY entertainment.movies(id,title,year,rating,director) FROM 'partial_data.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+Using 15 child processes
+
+Starting copy of entertainment.movies with columns [id, title, year, rating, director].
+Processed: 100 rows; Rate:      32 rows/s; Avg. rate:      60 rows/s
+100 rows imported from 1 files in 0 day, 0 hour, 0 minute, and 1.666 seconds (0 skipped).
+theia@theiadocker-jomelfelix:/home/project$ cqlsh 172.21.255.67 9042 --username root --password o7VFD9r4KxRi8hPSNpxZsVdd
+WARNING: cqlsh was built against 4.0.19, but this server is 5.0.  All features may not work!
+Connected to Test Cluster at 172.21.255.67:9042
+[cqlsh 6.0.0 | Cassandra 5.0-beta1 | CQL spec 3.4.7 | Native protocol v5]
+Use HELP for help.
+root@cqlsh> 
+root@cqlsh> exit
+theia@theiadocker-jomelfelix:/home/project$ curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-DB0151EN-edX/labs/FinalProject/partial_data.csv
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  3120  100  3120    0     0  20257      0 --:--:-- --:--:-- --:--:-- 20392
+theia@theiadocker-jomelfelix:/home/project$ cqlsh 172.21.255.67 9042 --username root --password o7VFD9r4KxRi8hPSNpxZsVdd
+WARNING: cqlsh was built against 4.0.19, but this server is 5.0.  All features may not work!
+Connected to Test Cluster at 172.21.255.67:9042
+[cqlsh 6.0.0 | Cassandra 5.0-beta1 | CQL spec 3.4.7 | Native protocol v5]
+Use HELP for help.
+root@cqlsh> CREATE KEYSPACE entertainment  
+   ... WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
+
+Warnings :
+Your replication factor 3 for keyspace entertainment is higher than the number of nodes 1
+
+root@cqlsh> use entertainment;
+root@cqlsh:entertainment> CREATE TABLE movies(
+                 ... id text PRIMARY KEY,
+                 ... title text,
+                 ... year text,
+                 ... rating text,
+                 ... director text
+                 ... );
+root@cqlsh:entertainment> COPY entertainment.movies(id,title,year,rating,director) FROM 'partial_data.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+Using 15 child processes
+
+Starting copy of entertainment.movies with columns [id, title, year, rating, director].
+Processed: 100 rows; Rate:      32 rows/s; Avg. rate:      60 rows/s
+100 rows imported from 1 files in 0 day, 0 hour, 0 minute, and 1.666 seconds (0 skipped).
+root@cqlsh:entertainment> COPY keyspace.table_name(columns) FROM 'file_path' WITH DELIMITER=',' AND HEADER=TRUE;
+Improper COPY command.
+root@cqlsh:entertainment> SELECT COUNT(*) FROM movies;
+
+ count
+-------
+   100
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+theia@theiadocker-jomelfelix:/home/project$ cqlsh 172.21.255.67 9042 --username root --password o7VFD9r4KxRi8hPSNpxZsVdd
+WARNING: cqlsh was built against 4.0.19, but this server is 5.0.  All features may not work!
+Connected to Test Cluster at 172.21.255.67:9042
+[cqlsh 6.0.0 | Cassandra 5.0-beta1 | CQL spec 3.4.7 | Native protocol v5]
+Use HELP for help.
+root@cqlsh> 
+root@cqlsh> exit
+theia@theiadocker-jomelfelix:/home/project$ curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-DB0151EN-edX/labs/FinalProject/partial_data.csv
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  3120  100  3120    0     0  20257      0 --:--:-- --:--:-- --:--:-- 20392
+theia@theiadocker-jomelfelix:/home/project$ cqlsh 172.21.255.67 9042 --username root --password o7VFD9r4KxRi8hPSNpxZsVdd
+WARNING: cqlsh was built against 4.0.19, but this server is 5.0.  All features may not work!
+Connected to Test Cluster at 172.21.255.67:9042
+[cqlsh 6.0.0 | Cassandra 5.0-beta1 | CQL spec 3.4.7 | Native protocol v5]
+Use HELP for help.
+root@cqlsh> CREATE KEYSPACE entertainment  
+   ... WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
+
+Warnings :
+Your replication factor 3 for keyspace entertainment is higher than the number of nodes 1
+
+root@cqlsh> use entertainment;
+root@cqlsh:entertainment> CREATE TABLE movies(
+                 ... id text PRIMARY KEY,
+                 ... title text,
+                 ... year text,
+                 ... rating text,
+                 ... director text
+                 ... );
+root@cqlsh:entertainment> COPY entertainment.movies(id,title,year,rating,director) FROM 'partial_data.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+Using 15 child processes
+
+Starting copy of entertainment.movies with columns [id, title, year, rating, director].
+Processed: 100 rows; Rate:      32 rows/s; Avg. rate:      60 rows/s
+100 rows imported from 1 files in 0 day, 0 hour, 0 minute, and 1.666 seconds (0 skipped).
+root@cqlsh:entertainment> COPY keyspace.table_name(columns) FROM 'file_path' WITH DELIMITER=',' AND HEADER=TRUE;
+Improper COPY command.
+root@cqlsh:entertainment> SELECT COUNT(*) FROM movies;
+
+ count
+-------
+   100
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+root@cqlsh:entertainment> CREATE INDEX rating_index ON entertainment.movies(rating);
+theia@theiadocker-jomelfelix:/home/project$ cqlsh 172.21.255.67 9042 --username root --password o7VFD9r4KxRi8hPSNpxZsVdd
+WARNING: cqlsh was built against 4.0.19, but this server is 5.0.  All features may not work!
+Connected to Test Cluster at 172.21.255.67:9042
+[cqlsh 6.0.0 | Cassandra 5.0-beta1 | CQL spec 3.4.7 | Native protocol v5]
+Use HELP for help.
+root@cqlsh> 
+root@cqlsh> exit
+theia@theiadocker-jomelfelix:/home/project$ curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-DB0151EN-edX/labs/FinalProject/partial_data.csv
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  3120  100  3120    0     0  20257      0 --:--:-- --:--:-- --:--:-- 20392
+theia@theiadocker-jomelfelix:/home/project$ cqlsh 172.21.255.67 9042 --username root --password o7VFD9r4KxRi8hPSNpxZsVdd
+WARNING: cqlsh was built against 4.0.19, but this server is 5.0.  All features may not work!
+Connected to Test Cluster at 172.21.255.67:9042
+[cqlsh 6.0.0 | Cassandra 5.0-beta1 | CQL spec 3.4.7 | Native protocol v5]
+Use HELP for help.
+root@cqlsh> CREATE KEYSPACE entertainment  
+   ... WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
+
+Warnings :
+Your replication factor 3 for keyspace entertainment is higher than the number of nodes 1
+
+root@cqlsh> use entertainment;
+root@cqlsh:entertainment> CREATE TABLE movies(
+                 ... id text PRIMARY KEY,
+                 ... title text,
+                 ... year text,
+                 ... rating text,
+                 ... director text
+                 ... );
+root@cqlsh:entertainment> COPY entertainment.movies(id,title,year,rating,director) FROM 'partial_data.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+Using 15 child processes
+
+Starting copy of entertainment.movies with columns [id, title, year, rating, director].
+Processed: 100 rows; Rate:      32 rows/s; Avg. rate:      60 rows/s
+100 rows imported from 1 files in 0 day, 0 hour, 0 minute, and 1.666 seconds (0 skipped).
+root@cqlsh:entertainment> COPY keyspace.table_name(columns) FROM 'file_path' WITH DELIMITER=',' AND HEADER=TRUE;
+Improper COPY command.
+root@cqlsh:entertainment> SELECT COUNT(*) FROM movies;
+
+ count
+-------
+   100
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+root@cqlsh:entertainment> CREATE INDEX rating_index ON entertainment.movies(rating);
+root@cqlsh:entertainment> SELECT count(*) FROM movies WHERE rating='G';SELECT count(*) FROM movies WHERE rating='G';SELECT count(*) FROM movies WHERE rating='G';SELECT count(*) FROM movies WHERE rating='G';
+[1]+  Stopped                 cqlsh 172.21.255.67 9042 --username root --password o7VFD9r4KxRi8hPSNpxZsVdd
+theia@theiadocker-jomelfelix:/home/project$ cqlsh 172.21.255.67 9042 --username root --password o7VFD9r4KxRi8hPSNpxZsVdd
+WARNING: cqlsh was built against 4.0.19, but this server is 5.0.  All features may not work!
+Connected to Test Cluster at 172.21.255.67:9042
+[cqlsh 6.0.0 | Cassandra 5.0-beta1 | CQL spec 3.4.7 | Native protocol v5]
+Use HELP for help.
+root@cqlsh> use entertainment
+   ... 
+   ... 
+root@cqlsh> use entertainment;
+root@cqlsh:entertainment> use entertainment;
+root@cqlsh:entertainment> 
+root@cqlsh:entertainment> SELECT count(*) FROM movies WHERE rating='G';
+
+ count
+-------
+    32
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+root@cqlsh:entertainment> exit
+theia@theiadocker-jomelfelix:/home/project$ 
